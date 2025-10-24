@@ -3,6 +3,7 @@ const music = document.getElementById("song");
 const pauseButton = document.getElementById("pause");
 const audioSlider = document.getElementById("audioBar");
 
+music.volume = .25;
 
 pauseButton.addEventListener("click", () => {
     if (music.paused) {
