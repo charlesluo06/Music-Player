@@ -26,9 +26,8 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #BF3475, #1F214D, #50366F);
-    width: 100vh;
+    width: 80vh;
     border-radius: 10px;
-    max-width: 70%;
     height: 500px;
     margin:auto;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
