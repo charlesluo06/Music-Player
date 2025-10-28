@@ -14,24 +14,32 @@
             </h1>
         </div>
         <div class="songCover">
+            <img id="coverImg" src="loveImg.jpg" alt="Song Cover">
         </div>
         <div class="songTitle">
-            Song 1
+            Love Yourself
         </div>
         <div class="controls">
             <img id="rewind" src="pngaaa.com-2333931.png">
             <img id="play" src="play-32.png">
             <img id="pause" src="pause-button-round-white-icon.webp">
-            <img id="fast-forward" src="[CITYPNG.COM]Transparent HD Fast Forward White Icon - 600x600.png">
+            <img id="next" src="[CITYPNG.COM]Transparent HD Fast Forward White Icon - 600x600.png">
         </div>
         <div class="songBar">
-            <input type="range" value="0" min="0" max="100">
+            <p id="currentTime">
+                0:00
+            </p>
+            <input id="durationBar" type="range" value="0" min="0" max="100">
+            <p id="totalTime">
+                0:00
+            </p>
         </div>
         <div class="vertical-bar">
         <input id="audioBar" type="range" value="25" step="1" min="0" max="100">
         <img id="volumeIcon" src="—Pngtree—white volume icon_4541974.png">
+        <img id="muteIcon" src="mute-2-24.png">
         </div>
-        <audio id="song" preload="auto" src="Justin Bieber - Love Yourself (Lyrics).mp3">
+        <audio id="song" preload="auto" src="loveyourself.mp3">
         </audio>
     </div>
     <script src="script.js" defer></script>
