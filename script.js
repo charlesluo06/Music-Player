@@ -45,10 +45,16 @@ const songs = [ // playlist array
         cover: "always.jpg"
     },
     {
-        title: "Say You Won't Let Go",
-        artist: "James Arthur",
-        src: "sayYou.mp3",
-        cover: "say.jpg"
+        title: "No Pole",
+        artist: "Don Toliver",
+        src: "noPole.mp3",
+        cover: "loveSick.jpg"
+    },
+    {
+        title: "Someone Else",
+        artist: "Tory Lanez",
+        src: "someoneElse.mp3",
+        cover: "someoneElse.jpg"
     }
 ];
 
