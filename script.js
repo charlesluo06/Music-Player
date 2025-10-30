@@ -11,6 +11,7 @@ const playerBackground = document.getElementById("playerBackground");
 const songCover = document.getElementById("coverImg");
 const artist = document.getElementById("artist");
 const body = document.body;
+const shuffle = document.getElementById("shuffle");
 let currentTime = document.getElementById("currentTime");
 let totalTime = document.getElementById("totalTime");
 
@@ -45,6 +46,12 @@ const songs = [ // playlist array
         cover: "always.jpg"
     },
     {
+        title: "I Feel It Coming",
+        artist: "The Weeknd",
+        src: "coming.mp3",
+        cover: "starboy.png"
+    },
+    {
         title: "No Pole",
         artist: "Don Toliver",
         src: "noPole.mp3",
@@ -58,7 +65,6 @@ const songs = [ // playlist array
     }
 ];
 
-
 const playlistSize = songs.length;
 let currentSongIndex = 0;
 
@@ -68,6 +74,21 @@ window.addEventListener("DOMContentLoaded", () => {
     music.load(); // forces metadata to load
 });
 
+function loadSong(index) {
+  music.src = songs[index].src;
+  coverImg.src = songs[index].cover;
+  songTitle.textContent = songs[index].title;
+  artist.textContent = songs[index].artist;
+  music.load();
+}
+
+function shufflePlaylist(songs){
+    for (let i = songs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [songs[i], songs[j]] = [songs[j], songs[i]];
+    }
+    return songs
+}
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds/60);
@@ -115,6 +136,11 @@ muteIcon.addEventListener("click", () => {
 })
 
 rewindButton.addEventListener("click", () => {  // Add the previous song feature later :))
+    rewindButton.classList.add("pop");
+
+    setTimeout(() => {
+        rewindButton.classList.remove("pop");   
+    }, 200)
     if (music.currentTime >= 2){
         music.currentTime = 0;
     }
@@ -157,12 +183,33 @@ document.addEventListener("keydown", (e) => {   // space bar functionality
     }
 });
 
+shuffle.addEventListener("click", () => {
+    shuffle.classList.add("pop");
+
+    setTimeout(() => {      // test later with just style.width/height
+    shuffle.classList.remove("pop");
+    }, 200);
+
+    shufflePlaylist(songs);
+    currentSongIndex = 0;
+    loadSong(currentSongIndex);
+    music.play();
+    pauseButton.style.opacity = '1';
+    playButton.style.opacity = "0";
+});
+
 nextButton.addEventListener("click", () => {
     currentSongIndex++;
 
     if (currentSongIndex >= playlistSize){
         currentSongIndex = 0;
     }
+
+    nextButton.classList.add("pop");
+
+    setTimeout(() => {
+        nextButton.classList.remove("pop");   
+    }, 200)
 
     music.src = songs[currentSongIndex].src;
     songTitle.textContent = songs[currentSongIndex].title;
