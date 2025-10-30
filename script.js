@@ -10,6 +10,7 @@ const songTitle = document.getElementById("songTitle");
 const playerBackground = document.getElementById("playerBackground");
 const songCover = document.getElementById("coverImg");
 const artist = document.getElementById("artist");
+const body = document.body;
 let currentTime = document.getElementById("currentTime");
 let totalTime = document.getElementById("totalTime");
 
@@ -17,6 +18,7 @@ let totalTime = document.getElementById("totalTime");
 // LOAD INITIAL GRADIENT
     const colorThief = new ColorThief();
     const palette = colorThief.getPalette(songCover, 3);
+    const color = colorThief.getColor(songCover);
 
     const gradient = `linear-gradient(135deg, 
     rgb(${palette[0][0]}, ${palette[0][1]}, ${palette[0][2]}),
@@ -24,7 +26,9 @@ let totalTime = document.getElementById("totalTime");
     rgb(${palette[2][0]}, ${palette[2][1]}, ${palette[2][2]})
     )`;
 
+    body.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
     playerBackground.style.background = gradient;
+    
 
 
 const songs = [ // playlist array
@@ -153,7 +157,7 @@ nextButton.addEventListener("click", () => {
     if (currentSongIndex >= playlistSize){
         currentSongIndex = 0;
     }
-    
+
     music.src = songs[currentSongIndex].src;
     songTitle.textContent = songs[currentSongIndex].title;
     coverImg.src = songs[currentSongIndex].cover;
@@ -183,6 +187,7 @@ music.addEventListener("timeupdate", () => {
 songCover.addEventListener("load", () => {
     const colorThief = new ColorThief();
     const palette = colorThief.getPalette(songCover, 3);
+    const color = colorThief.getColor(songCover);
 
     const gradient = `linear-gradient(135deg, 
     rgb(${palette[0][0]}, ${palette[0][1]}, ${palette[0][2]}),
@@ -190,5 +195,6 @@ songCover.addEventListener("load", () => {
     rgb(${palette[2][0]}, ${palette[2][1]}, ${palette[2][2]})
     )`;
 
+    body.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
     playerBackground.style.background = gradient;
 });

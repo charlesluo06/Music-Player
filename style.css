@@ -28,7 +28,6 @@ body {
     margin:auto;
     width: 90vw;
     height: 100vh;
-    background-color: #f7dab5;
 }
 
 .musicPlayer {
@@ -197,6 +196,10 @@ body {
     cursor: pointer;
     width: 50px;
     height: 40px;
+}
+
+body {
+    transition: background 0.5s ease-in-out;
 }
 
 #play {
