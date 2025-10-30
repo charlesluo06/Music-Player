@@ -13,9 +13,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:0;
+    margin:auto;
+    width: 90vw;
     height: 100vh;
-    background-color: #c77eaa;
+    background-color: #f7dab5;
 }
 
 .musicPlayer {
@@ -26,7 +27,7 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #BF3475, #1F214D, #50366F);
-    width: 80vh;
+    width: 75vh;
     border-radius: 10px;
     height: 500px;
     margin:auto;
