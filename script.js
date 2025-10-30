@@ -7,10 +7,24 @@ const nextButton = document.getElementById("next");
 const durationBar = document.getElementById("durationBar");
 const volumeIcon = document.getElementById("volumeIcon");
 const songTitle = document.getElementById("songTitle");
+const playerBackground = document.getElementById("playerBackground");
 const songCover = document.getElementById("coverImg");
 const artist = document.getElementById("artist");
 let currentTime = document.getElementById("currentTime");
 let totalTime = document.getElementById("totalTime");
+
+
+// LOAD INITIAL GRADIENT
+    const colorThief = new ColorThief();
+    const palette = colorThief.getPalette(songCover, 3);
+
+    const gradient = `linear-gradient(135deg, 
+    rgb(${palette[0][0]}, ${palette[0][1]}, ${palette[0][2]}),
+    rgb(${palette[1][0]}, ${palette[1][1]}, ${palette[1][2]}),
+    rgb(${palette[2][0]}, ${palette[2][1]}, ${palette[2][2]})
+    )`;
+
+    playerBackground.style.background = gradient;
 
 
 const songs = [ // playlist array
@@ -34,6 +48,8 @@ const songs = [ // playlist array
     }
 ];
 
+
+const playlistSize = songs.length;
 let currentSongIndex = 0;
 
 music.volume = .25;
@@ -69,6 +85,7 @@ pauseButton.addEventListener("click", () => {
     }
 });
 
+
 audioSlider.addEventListener("input", ()=> {
     music.volume = audioSlider.value/100;
 });
@@ -96,6 +113,7 @@ rewindButton.addEventListener("click", () => {  // Add the previous song feature
         music.src = songs[currentSongIndex].src;
         songTitle.textContent = songs[currentSongIndex].title;
         coverImg.src = songs[currentSongIndex].cover;
+        artist.textContent = songs[currentSongIndex].artist;
         if (music.paused) {
                 music.play();
                 pauseButton.style.opacity = '1';
@@ -131,6 +149,11 @@ document.addEventListener("keydown", (e) => {   // space bar functionality
 
 nextButton.addEventListener("click", () => {
     currentSongIndex++;
+
+    if (currentSongIndex >= playlistSize){
+        currentSongIndex = 0;
+    }
+    
     music.src = songs[currentSongIndex].src;
     songTitle.textContent = songs[currentSongIndex].title;
     coverImg.src = songs[currentSongIndex].cover;
@@ -155,4 +178,17 @@ music.addEventListener("timeupdate", () => {
                 playButton.style.opacity = "0";
         }
     }
+});
+
+songCover.addEventListener("load", () => {
+    const colorThief = new ColorThief();
+    const palette = colorThief.getPalette(songCover, 3);
+
+    const gradient = `linear-gradient(135deg, 
+    rgb(${palette[0][0]}, ${palette[0][1]}, ${palette[0][2]}),
+    rgb(${palette[1][0]}, ${palette[1][1]}, ${palette[1][2]}),
+    rgb(${palette[2][0]}, ${palette[2][1]}, ${palette[2][2]})
+    )`;
+
+    playerBackground.style.background = gradient;
 });
