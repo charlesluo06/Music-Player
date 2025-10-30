@@ -8,6 +8,18 @@
     src: url(Poppins-Regular.ttf) format(truetype);
 }
 
+@media (max-width: 600px) {
+  .musicPlayer {
+    width: 95vw;
+    height: auto;
+    padding: 20px;
+  }
+
+  .songCover {
+    width: 70%;
+    height: auto;
+  }
+}
 
 body {
     display: flex;
