@@ -58,9 +58,27 @@ body {
     max-width: fit-content;
     color: white;
     margin-right: 5px;
+    align-items: center;
+    gap: 3px;
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.songTitle p {
+    margin: 1px;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+#songTitle {
     font-weight: bold;
+}
+
+#artist {
+    opacity: 0.5;
+    font-weight: 100;
 }
 
 .songBar {
